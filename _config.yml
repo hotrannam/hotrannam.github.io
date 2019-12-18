@@ -1,0 +1,12 @@
+permalink: /posts/:title
+markdown: kramdown
+
+gems:
+  - jekyll-sitemap
+
+name: Nam Ho
+description: Nam's blog
+twitter: hotrannam
+github:
+  owner_url: https://github.com/hotrannam
+  owner_gravatar_url: https://avatars0.githubusercontent.com/u/156885?s=460&v=4
