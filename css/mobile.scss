@@ -22,14 +22,14 @@
     padding: 25px;
   }
   li {
-    display: inline;
+    display: inline-block;
   }
   .sections {
     margin: 0;
     a {
       font-size: 16px;
-      margin: 0 20px 0 0;
-      padding: 5px 10px;
+      margin: 0 10px 0 0;
+      padding: 15px 0px;
     }
   }
 }
