@@ -4,4 +4,4 @@ title: Hello
 category: posts
 ---
 
-Just say Hi!
+Hi there.
