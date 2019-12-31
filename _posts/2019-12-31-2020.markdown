@@ -4,7 +4,7 @@ title: 2020
 category: posts
 ---
 
-2019 was a year of fun with
+2019 has been a year of fun for me with
 
 - Kubernetes
 - Blockchain
