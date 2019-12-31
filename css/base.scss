@@ -18,7 +18,6 @@ a {
   left: 15px;
   top: 15px;
   width: 80px;
-  font-family: Helvetica, sans-serif;
   a {
     text-decoration: none;
   }
@@ -36,12 +35,12 @@ a {
     margin: 10px 0 20px 0;
     #fname {
       padding-left: 1px;
-      font-size: 23px;
+      font-size: 16px;
       letter-spacing: 5px;
       color: black;
     }
     #lname {
-      font-size: 17px;
+      font-size: 16px;
       letter-spacing: 1px;
       color: black;
     }
@@ -64,7 +63,7 @@ a {
     a {
       padding: 3px 0;
       color: black;
-      font-size: 12px;
+      font-size: 15px;
       display: block;
       &:hover {
         color: #227ce8;
@@ -88,7 +87,6 @@ a {
   margin-bottom: 50px;
   h1, h2, h3, h4 {
     color: #333;
-    font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
     font-weight: 400;
     a {
       color: #111;
@@ -96,7 +94,7 @@ a {
     }
   }
   h1 {
-    font-size: 36px;
+    font-size: 30px;
     margin: 18px 0 5px 0;
   }
   h2 {
@@ -157,7 +155,6 @@ a {
   }
   .byline {
     margin-bottom: 17px;
-    font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
     padding-left: 0px;
     font-size: 17px;
     color: #777;
@@ -173,13 +170,12 @@ a {
   .listing {
     margin: 10px 0 0 0;
     padding: 0;
-    font-family: Helvetica, sans-serif;
     ul {
       margin: 0;
       padding: 0;
     }
     li {
-      font-size: 13px;
+      font-size: 17px;
       list-style: none;
       padding: 5px 3px;
       margin: 0;
@@ -199,7 +195,6 @@ a {
   .meta {
     margin: 30px 0;
     padding: 10px 0;
-    font-family: Helvetica, sans-serif;
     p {
       line-height: 1.4;
       font-size: 14px;
@@ -226,7 +221,6 @@ a {
       margin-right: 10px;
       padding: 5px 15px;
       border: 1px solid #000;
-      font-family: Helvetica, sans-serif;
       font-size: 12px;
       font-weight: bold;
     }
