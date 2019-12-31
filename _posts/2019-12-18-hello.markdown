@@ -1,7 +1,0 @@
----
-layout: post
-title: Hello
-category: posts
----
-
-Hi there.

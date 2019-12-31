@@ -1,0 +1,13 @@
+---
+layout: post
+title: 2020
+category: posts
+---
+
+2019 was a year of fun.
+
+1. Kubernetes
+2. Blockchain
+3. Marathon
+
+Looking forward to a new year, a new adventure in 2020.
