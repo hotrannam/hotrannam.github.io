@@ -12,7 +12,8 @@
   .name {
     display: inline;
     #fname, #lname {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: bold;
     }
   }
   .meta {
@@ -27,7 +28,7 @@
   .sections {
     margin: 0;
     a {
-      font-size: 16px;
+      font-size: 17px;
       margin: 0 10px 0 0;
       padding: 15px 0px;
     }
