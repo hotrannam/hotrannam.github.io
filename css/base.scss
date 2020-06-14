@@ -67,11 +67,12 @@ a {
     margin: 15px 0 0 0;
     a {
       padding: 3px 0;
-      color: black;
       font-size: 17px;
       display: block;
+      text-decoration: underline;
       &:hover {
         color: #227ce8;
+        text-decoration: underline;
       }
     }
     ul {
@@ -189,7 +190,6 @@ a {
       }
     }
     a {
-      text-decoration: none;
       &:hover {
         text-decoration: underline;
       }
