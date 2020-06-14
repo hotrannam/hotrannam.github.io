@@ -29,7 +29,8 @@
     display: inline-block;
   }
   .sections {
-    margin: 0;
+    float: right;
+    margin: -17px 0px 0px 0px;
     a {
       font-size: 17px;
       margin: 0 10px 0 0;
@@ -39,7 +40,6 @@
 }
 
 .content {
-  width: 100%;
   margin: 0;
   padding: 25px 0px 0px 0px;
   h1 {
