@@ -4,9 +4,14 @@
 @charset "UTF-8";
 
 body {
-  font-family: 'Merriweather','Georgia',serif;
+  font-family: 'Merriweather', 'Georgia', serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 800px;
+  margin: auto;
 }
 
 a {
@@ -14,9 +19,7 @@ a {
 }
 
 .sidebar {
-  position: fixed;
-  left: 15px;
-  top: 15px;
+  float: left;
   width: 80px;
   a {
     text-decoration: none;
@@ -84,8 +87,7 @@ a {
 
 .content {
   font-size: 17px;
-  max-width: 650px;
-  margin-left: 110px;
+  margin-left: 100px;
   margin-right: 20px;
   margin-bottom: 50px;
   h1, h2, h3, h4 {
@@ -97,16 +99,15 @@ a {
     }
   }
   h1 {
-    font-size: 30px;
+    font-size: 25px;
     margin: 18px 0 5px 0;
   }
   h2 {
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 15px;
   }
   h3 {
-    color: #777;
-    font-size: 25px;
+    font-size: 18px;
     padding-bottom: 5px;
     margin-bottom: 10px;
   }
