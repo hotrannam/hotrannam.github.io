@@ -7,6 +7,8 @@ body {
   font-family: 'Merriweather', 'Georgia', serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  background-color: #fffff8;
+  color: #111;
 }
 
 .container {
@@ -15,7 +17,7 @@ body {
 }
 
 a {
-  color: #227ce8;
+  color: #111;
 }
 
 .sidebar {
@@ -41,22 +43,16 @@ a {
       font-size: 16px;
       font-weight: bold;
       letter-spacing: 5px;
-      color: black;
     }
     #lname {
       font-size: 16px;
       font-weight: bold;
       letter-spacing: 1px;
-      color: black;
     }
   }
   .meta {
     a {
       margin-left: 0px;
-      color: black;
-      &:hover {
-        color: #227ce8;
-      }
     }
     margin-left: 4px;
     .icon {
@@ -71,7 +67,6 @@ a {
       display: block;
       text-decoration: underline;
       &:hover {
-        color: #227ce8;
         text-decoration: underline;
       }
     }
