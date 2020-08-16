@@ -10,11 +10,13 @@ We will use Minikube for this tutorial. To start Minikube
 minikube start --vm=true
 ```
 
+
 and then hook up the Minikube Docker daemon for local Docker images once Minikube started.
 
 ```bash
 eval $(minikube docker-env)
 ```
+
 
 The following are Node.js service and Dockerfile.
 
@@ -34,6 +36,7 @@ server.listen(port, () => {
 });
 ```
 
+
 and Dockerfile
 
 ```bash
@@ -43,6 +46,7 @@ COPY index.js .
 EXPOSE 8080
 CMD [ "node", "index.js" ]
 ```
+
 
 We will build local Docker images with names ping-svc:dev and pong-svc:dev.
 
