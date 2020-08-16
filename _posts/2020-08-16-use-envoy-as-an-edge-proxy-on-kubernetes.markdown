@@ -4,17 +4,16 @@ title: Use Envoy as an edge proxy on Kubernetes
 category: posts
 ---
 
-This tutorial demostrates how to use Envoy proxy as an API gateway for ping and pong services. All is deployed to Kubernetes or Minikube.
+This is a tutorial on how to use Envoy proxy as an API gateway for backend services. All is deployed to Kubernetes or Minikube.
 
-We need to build Docker image for Envoy proxy with a configuration. The full configuration of Envoy proxy can be found [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml)
-
+First, we build Docker image for Envoy proxy with a configuration.
 
 ```bash
 FROM envoyproxy/envoy-dev:22c921a6318f07847afc61bc137a9e4833889b9d
 COPY envoy.yaml /etc/envoy/envoy.yaml
 ```
 
-We tell Envoy proxy to listen to a port, in this case 30000.
+The full configuration of Envoy proxy can be found [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml). We tell Envoy proxy to listen to a port, in this case 30000.
 
 ```yaml
 listeners:
@@ -35,7 +34,7 @@ routes:
   route: { cluster: ping-svc }
 ```
 
-As mentioned early, we have 2 services ping and pong. Based on the URL matching with the prefix, we will route requests to right clusters. Now, let's talk about cluster.
+We have 2 backend services - ping and pong. Based on the URL matching with the prefix, we will route requests to right clusters. Now, let's talk about cluster.
 
 ```yaml
 clusters:
@@ -55,7 +54,7 @@ clusters:
               port_value: 8080
 ```
 
-A cluster is a collection of address with IP and port that are the backend for a service, in this case we use domain name in Kubernetes instead - `ping-svc.default.svc.cluster.local`.
+A cluster is a collection of address with IP and port that are the backend for a service, in this case we use domain name in Kubernetes instead - `ping-svc.default.svc.cluster.local`, and cluster type `STRICT_DNS`.
 
 Envoy supports some load balancer types, we use round robin order for upstream selection for now.
 
@@ -98,6 +97,6 @@ spec:
       targetPort: 30000
 ```
 
-In this tutorial, we build local Docker images and config Kubernetes to use them as you will be noticed with `imagePullPolicy: Never`. You can follow instruction [here](https://github.com/hotrannam/k8s-dev/blob/master/README.md) and grab full source code at this GitHub [repo](https://github.com/hotrannam/k8s-dev)
+In this tutorial, we build local Docker images and config Kubernetes to use them as you will be noticed with `imagePullPolicy: Never`. You can follow instruction [here](https://github.com/hotrannam/k8s-dev/blob/master/README.md) and get complete source code at the [repo](https://github.com/hotrannam/k8s-dev) to deploy on Kubernetes.
 
-This is the first post in the series of Envoy, I will write more posts on other features of Envoy in context of deploying to Kubenetes.
+I will write more posts for the series of Envoy. This is the first post.
