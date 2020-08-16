@@ -12,16 +12,19 @@ body {
 }
 
 .highlight {
-  /*margin: 0;*/
-  /*background-color: #eee;*/
-  font-size: 15px;
-  padding: 0px 15px;
+  background-color: #f6f8fa;
+  font-size: 14px;
+  padding: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   overflow: hidden;
   text-shadow: none;
   color: #111;
-  margin-bottom: 10px;
+}
+
+pre {
+  white-space: pre;
+  overflow: auto;
 }
 
 .container {
