@@ -4,21 +4,14 @@ title: Use Envoy as an edge proxy on Kubernetes
 category: posts
 ---
 
-We will use Minikube for this tutorial. To start Minikube
+To start Minikube and hook up the Minikube Docker daemon for local Docker images once Minikube started.
 
 ```bash
 minikube start --vm=true
-```
-
-
-and then hook up the Minikube Docker daemon for local Docker images once Minikube started.
-
-```bash
 eval $(minikube docker-env)
 ```
 
-
-The following are Node.js service and Dockerfile.
+Ping and pong services are written in Node.js
 
 ```javascript
 const http = require('http');
@@ -36,8 +29,7 @@ server.listen(port, () => {
 });
 ```
 
-
-and Dockerfile
+Dockerfile of Docker images ping-svc:dev and pong-svc:dev
 
 ```bash
 FROM node:12
@@ -46,8 +38,5 @@ COPY index.js .
 EXPOSE 8080
 CMD [ "node", "index.js" ]
 ```
-
-
-We will build local Docker images with names ping-svc:dev and pong-svc:dev.
 
 
