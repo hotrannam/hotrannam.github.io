@@ -56,9 +56,18 @@
   overflow: hidden;
   text-shadow: none;
   color: #111;
+  margin-bottom: 20px;
 }
 
-pre {
-  white-space: pre;
-  overflow: auto;
+.highlight pre code * {
+  white-space: nowrap;
 }
+
+.highlight pre {
+  overflow-x: auto;
+}
+
+.highlight pre code {
+  white-space: pre;
+}
+

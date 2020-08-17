@@ -4,16 +4,16 @@ title: Use Envoy as an edge proxy on Kubernetes
 category: posts
 ---
 
-This is a tutorial on how to use Envoy proxy as an API gateway for backend services. All is deployed to Kubernetes or Minikube.
+In the first post of the Envoy series, I will go through how to use Envoy proxy as an API gateway for backend services which are deployed on Kubernetes.
 
-First, we build Docker image for Envoy proxy with a configuration.
+First, I build a Docker image for Envoy proxy with a customized configuration. For the complete configuration, it can be found [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml).
 
 ```bash
 FROM envoyproxy/envoy-dev:22c921a6318f07847afc61bc137a9e4833889b9d
 COPY envoy.yaml /etc/envoy/envoy.yaml
 ```
 
-The full configuration of Envoy proxy can be found [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml). We tell Envoy proxy to listen to a port, in this case 30000.
+In the listener, I bind Envoy proxy to port 30000.
 
 ```yaml
 listeners:
@@ -22,29 +22,29 @@ listeners:
     socket_address: { address: 0.0.0.0, port_value: 30000 }
 ```
 
-We use `http_connection_manager` for HTTP filter. Next, we config routes to handle requests that Envoy proxy receives.
+Next, I config routes for handling requests that Envoy proxy receives. I use `http_connection_manager` for HTTP filter in this case.
 
 ```yaml
 routes:
 - match: { prefix: "/pong" }
-  route: { cluster: pong-svc }
+  route: { cluster: pong-cluster }
 - match: { prefix: "/ping" }
-  route: { cluster: ping-svc }
+  route: { cluster: ping-cluster }
 - match: { prefix: "/" }
-  route: { cluster: ping-svc }
+  route: { cluster: ping-cluster }
 ```
 
-We have 2 backend services - ping and pong. Based on the URL matching with the prefix, we will route requests to right clusters. Now, let's talk about cluster.
+There are 2 backend services - ping and pong - to handle requests. Based on the URL matching with the prefix, we will route requests to right clusters. A cluster is a collection of IP address (or domain name) and port of a backend service. Think multiple instances of a backend service.
 
 ```yaml
 clusters:
-- name: ping-svc
+- name: ping-cluster
   connect_timeout: 0.25s
   type: STRICT_DNS
   dns_lookup_family: V4_ONLY
   lb_policy: ROUND_ROBIN
   load_assignment:
-    cluster_name: ping-svc
+    cluster_name: ping-cluster
     endpoints:
     - lb_endpoints:
       - endpoint:
@@ -54,11 +54,9 @@ clusters:
               port_value: 8080
 ```
 
-A cluster is a collection of address with IP and port that are the backend for a service, in this case we use domain name in Kubernetes instead - `ping-svc.default.svc.cluster.local`, and cluster type `STRICT_DNS`.
+I use Kubernetes domain name `ping-svc.default.svc.cluster.local` for service address and cluster type `STRICT_DNS`. Envoy supports some load balancer types, I use round robin order for upstream selection for now.
 
-Envoy supports some load balancer types, we use round robin order for upstream selection for now.
-
-Next, we define Kubernetes manifest for Envoy proxy.
+Next, I define Kubernetes manifest for Envoy proxy.
 
 ```yaml
 apiVersion: apps/v1
@@ -82,6 +80,9 @@ spec:
         ports:
         - containerPort: 30000
           protocol: TCP
+```
+
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -97,6 +98,5 @@ spec:
       targetPort: 30000
 ```
 
-In this tutorial, we build local Docker images and config Kubernetes to use them as you will be noticed with `imagePullPolicy: Never`. You can follow instruction [here](https://github.com/hotrannam/k8s-dev/blob/master/README.md) and get complete source code at the [repo](https://github.com/hotrannam/k8s-dev) to deploy on Kubernetes.
+You will be noticed by `imagePullPolicy: Never` as I tell Kubernetes to use local Dockr images. You can get complete source code with instructions [here](https://github.com/hotrannam/k8s-dev).
 
-I will write more posts for the series of Envoy. This is the first post.

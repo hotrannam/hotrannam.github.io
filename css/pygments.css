@@ -8,7 +8,6 @@
   overflow: hidden;
   text-shadow: none;
   color: #111;
-  margin-bottom: 10px;
 }*/
 .highlight {
   background-color: #f6f8fa;
@@ -19,10 +18,7 @@
   overflow: hidden;
   text-shadow: none;
   color: #111;
-}
-pre {
-  white-space: pre;
-  overflow: auto;
+  margin-bottom: 20px;
 }
 .hightlight code{
   float: left;
@@ -91,3 +87,14 @@ pre {
 .highlight .vi { color: #3333bb } /* Name.Variable.Instance */
 .highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
 
+.highlight pre code * {
+  white-space: nowrap;
+}
+
+.highlight pre {
+  overflow-x: auto;
+}
+
+.highlight pre code {
+  white-space: pre;
+}
