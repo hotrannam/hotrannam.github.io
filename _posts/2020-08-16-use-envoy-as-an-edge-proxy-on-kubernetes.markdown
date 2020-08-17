@@ -4,7 +4,7 @@ title: Use Envoy as an edge proxy on Kubernetes
 category: posts
 ---
 
-In the first post of the Envoy series, I will go through how to use Envoy proxy as an API gateway for backend services which are deployed on Kubernetes.
+In this post, I will go through how to use Envoy proxy as an API gateway for backend services which are deployed on Kubernetes.
 
 First, I build a Docker image for Envoy proxy with a customized configuration. For the complete configuration, it can be found [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml).
 
@@ -34,7 +34,7 @@ routes:
   route: { cluster: ping-cluster }
 ```
 
-There are 2 backend services - ping and pong - to handle requests. Based on the URL matching with the prefix, we will route requests to right clusters. A cluster is a collection of IP address (or domain name) and port of a backend service. Think multiple instances of a backend service.
+Envoy will proxy requests to right clusters if URL is matching with the prefix. A cluster is a collection of IP address (or domain name) and port of a backend service. Think multiple instances of a backend service. There are 2 ping and pong services in this case.
 
 ```yaml
 clusters:
@@ -98,5 +98,5 @@ spec:
       targetPort: 30000
 ```
 
-You will be noticed by `imagePullPolicy: Never` as I tell Kubernetes to use local Dockr images. You can get complete source code with instructions [here](https://github.com/hotrannam/k8s-dev).
+You will be noticed by `imagePullPolicy: Never` as I tell Kubernetes to use local Docker images. You can get complete source code with instructions [here](https://github.com/hotrannam/k8s-dev).
 
