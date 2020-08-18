@@ -6,7 +6,7 @@ category: posts
 
 In this post, I will go through how to use Envoy proxy as an API gateway for backend services which are deployed on Kubernetes.
 
-First, I build a Docker image for Envoy proxy with a custom configuration. For the complete configuration is [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml).
+First, I build a Docker image for Envoy proxy with a custom configuration. The complete configuration is [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml).
 
 ```bash
 FROM envoyproxy/envoy-dev:22c921a6318f07847afc61bc137a9e4833889b9d
