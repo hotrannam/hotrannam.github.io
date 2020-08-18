@@ -6,14 +6,14 @@ category: posts
 
 In this post, I will go through how to use Envoy proxy as an API gateway for backend services which are deployed on Kubernetes.
 
-First, I build a Docker image for Envoy proxy with a customized configuration. For the complete configuration, you can find [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml).
+First, I build a Docker image for Envoy proxy with a custom configuration. For the complete configuration is [here](https://github.com/hotrannam/k8s-dev/blob/master/edge-proxy/envoy.yaml).
 
 ```bash
 FROM envoyproxy/envoy-dev:22c921a6318f07847afc61bc137a9e4833889b9d
 COPY envoy.yaml /etc/envoy/envoy.yaml
 ```
 
-In the listener, I bind Envoy proxy to port 30000 to listen to HTTP traffic.
+In the listener, I bind Envoy proxy to port 30000 for listening to HTTP requests.
 
 ```yaml
 listeners:
@@ -22,7 +22,7 @@ listeners:
     socket_address: { address: 0.0.0.0, port_value: 30000 }
 ```
 
-Next, I config routes to handle HTTP requests that Envoy proxy receives.
+Next, I config routes to handle HTTP requests based on URL prefix so Envoy can proxy them to right clusters.
 
 ```yaml
 routes:
@@ -34,7 +34,7 @@ routes:
   route: { cluster: ping-cluster }
 ```
 
-Envoy will proxy requests to right clusters based on URL prefix. A cluster is a collection of IP address (or domain name) and port of a backend service. Think multiple instances of a backend service. There are 2 ping and pong services in this case.
+A cluster is a collection of IP address (or domain name) and port of a backend service. Think multiple instances of a backend service. There are 2 ping and pong services in this case.
 
 ```yaml
 clusters:
@@ -98,5 +98,5 @@ spec:
       targetPort: 30000
 ```
 
-You will be noticed by `imagePullPolicy: Never` as I tell Kubernetes to use local Docker images. You can get complete source code with instruction [here](https://github.com/hotrannam/k8s-dev).
+I tell Kubernetes to use local Docker images with this setting `imagePullPolicy: Never`. The instruction and complete source code is [here](https://github.com/hotrannam/k8s-dev).
 
