@@ -1,7 +1,0 @@
----
-layout: post
-title: 2019
-category: posts
----
-
-2019 was good with Kubernetes and blockchain. Looking forward to 2020.
