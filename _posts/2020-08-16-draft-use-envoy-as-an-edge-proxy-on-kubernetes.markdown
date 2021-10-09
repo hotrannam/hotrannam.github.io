@@ -2,6 +2,7 @@
 layout: post
 title: Use Envoy as an edge proxy on Kubernetes
 category: posts
+draft: true
 ---
 
 In this post, I will go through how to use Envoy proxy as an API gateway for backend services which are deployed on Kubernetes.
