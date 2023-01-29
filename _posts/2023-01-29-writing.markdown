@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Hello
+title: Writing
 category: posts
 draft: false
 ---
 
+To practice writing.
