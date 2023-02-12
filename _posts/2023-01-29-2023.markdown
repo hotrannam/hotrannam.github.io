@@ -5,4 +5,4 @@ category: posts
 draft: false
 ---
 
-In 2023: write and run.
+In 2023: write.
