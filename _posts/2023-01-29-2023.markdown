@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Writing
+title: 2023
 category: posts
 draft: false
 ---
 
-To practice writing.
+In 2023: write and run.
