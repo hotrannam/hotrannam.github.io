@@ -1,8 +1,0 @@
----
-layout: post
-title: 2023
-category: posts
-draft: false
----
-
-Write and run.
